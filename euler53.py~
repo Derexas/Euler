@@ -1,0 +1,30 @@
+import math, time
+
+t = time.time()
+
+# r!(n-r)! (max when r = n/2)
+
+def candstuff(n, r):
+	global result
+	if facts[n]/(facts[r]*facts[n - r]) > 1000000:
+		result += 1
+		return True
+	return False
+
+facts = [math.factorial(i) for i in range(0, 101)]
+
+result = 0
+for n in range(23,101):
+	r = int(n/2)
+	if candstuff(n, r) :
+		d = 1
+		okay = True
+		while okay:
+			if not candstuff(n, r + d):
+				okay = False
+			if not candstuff(n, r - d):
+				okay = False
+			d += 1
+
+print(result, (time.time()-t)*1000)
+
