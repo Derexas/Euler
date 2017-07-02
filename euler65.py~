@@ -1,9 +1,0 @@
-import math, time
-
-t = time.time()
-
-result = 0
-
-
-
-print(result, (time.time()-t)*1000)
